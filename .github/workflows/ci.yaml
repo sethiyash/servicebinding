@@ -2,12 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-    - '**'
-    - '!dependabot/**'
-    tags:
-    - '**'
-  pull_request: {}
 
 jobs:
 
@@ -82,6 +76,8 @@ jobs:
         cp config/carvel/bundle.yaml "bundle/bundle.yaml"
         cp -r samples "bundle/samples"
 
+        echo "----------------------------ROHIT-----------------------"
+        echo $slug
         echo "##[group]Build Service Bindings"
           cp hack/boilerplate/boilerplate.yaml.txt bundle/config/service-bindings.yaml
           ko resolve -t ${slug} -t latest -B -f config \
