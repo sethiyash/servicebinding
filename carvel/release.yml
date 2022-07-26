@@ -1,0 +1,7 @@
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+destinations:
+- image: service-binding-img
+  newImage: registry.local:5000/service-bindings
+  #newImage: BUNDLE
