@@ -1,0 +1,37 @@
+apiVersion: kctrl.carvel.dev/v1alpha1
+kind: PackageBuild
+metadata:
+  creationTimestamp: "2022-07-18T15:32:27Z"
+  name: servicebinding.vmware.com
+spec:
+  release:
+  - resource: {}
+  template:
+    spec:
+      app:
+        spec:
+          deploy:
+          - kapp: {}
+          template:
+          - kbld:
+              paths:
+              - config/service-bindings.yaml
+              - carvel/build.yml
+              - carvel/release.yml
+          - ytt:
+              paths:
+              - '-'
+              - bundle.yaml
+      export:
+      - imgpkgBundle:
+          image: docker.io/rohitagg2020/svcbinding-demo
+          useKbldImagesLock: true
+        includePaths:
+        - LICENSE
+        - NOTICE
+        - VERSION
+        - samples
+        - carvel/bundle.yaml
+        - config/service-bindings.yaml
+        - carvel/build.yml
+        - carvel/release.yml
