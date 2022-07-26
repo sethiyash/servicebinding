@@ -65,7 +65,7 @@ jobs:
         readonly slug=${version}-${git_timestamp}-${git_sha:0:16}
 
         echo "##[group]Build Service Bindings"
-          cp hack/boilerplate/boilerplate.yaml.txt bundle/config/service-bindings.yaml
+          cp hack/boilerplate/boilerplate.yaml.txt config/service-bindings.yaml
           ytt -f config -f carvel/release-version.overlay.yaml --data-value version=${slug} >> config/service-bindings.yaml
           /Users/roaggarwal/git/kctrl-pkg-init-release/carvel-kapp-controller/cli/kctrl pkg release --chdir /Users/roaggarwal/git/service-binding/servicebinding -y
         echo "##[endgroup]"
