@@ -70,12 +70,12 @@ jobs:
           ytt -f config -f carvel/release-version.overlay.yaml --data-value version=${slug} >> config/service-bindings.yaml
         echo "##[endgroup]"
     - name: Fetch kctrl
-        uses: actions/checkout@v3
-        with:
-          ref: kctrl-pkg-init-release
-          repository: vmware-tanzu/carvel-kapp-controller
-          path: carvel-kapp-controller
-          fetch-depth: 0
+      uses: actions/checkout@v3
+      with:
+        ref: kctrl-pkg-init-release
+        repository: vmware-tanzu/carvel-kapp-controller
+        path: carvel-kapp-controller
+        fetch-depth: 0
     - name: Build kctrl
       working-directory: ./carvel-kapp-controller/cli
       run: |
